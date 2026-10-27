@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comunidad UEA · Grupos de WhatsApp</title>
+<meta name="description" content="Encuentra y únete al grupo de WhatsApp de tu carrera. Comunidad estudiantil, no oficial.">
+<meta name="theme-color" content="#0f5a3c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --g950:#06281b; --g900:#0b3d2a; --g800:#0f5a3c; --g700:#14804f;
+    --g500:#22c55e; --g400:#4ade80; --g100:#dcfce7; --g50:#effaf3;
+    --ink:#0b3d2a; --muted:#4b6b5b; --card:#ffffff;
+    --radius:24px;
+    --shadow:0 10px 30px rgba(6,40,27,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    background:var(--g50); color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Poppins','Inter',system-ui,sans-serif;line-height:1.2}
+  a{color:inherit}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden; color:#fff; text-align:center;
+    padding:42px 0 56px;
+    background:
+      radial-gradient(900px 420px at 85% -10%, rgba(74,222,128,.35), transparent 60%),
+      radial-gradient(700px 380px at 0% 30%, rgba(34,197,94,.25), transparent 60%),
+      linear-gradient(160deg,var(--g950),var(--g800) 60%,var(--g700));
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0; opacity:.35; pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px, transparent 1.4px);
+    background-size:26px 26px;
+  }
+  .hero .wrap{position:relative}
+  .logo{
+    width:108px;height:108px;border-radius:50%; margin:0 auto 18px;
+    display:grid;place-items:center; font-size:44px;
+    background:#fff; border:3px solid rgba(255,255,255,.65); padding:5px;
+    box-shadow:0 8px 24px rgba(0,0,0,.3); overflow:hidden;
+  }
+  .logo img{width:100%;height:100%;object-fit:contain;display:block}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px; padding:8px 18px; border-radius:999px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28);
+    font-size:.92rem; font-weight:500; backdrop-filter:blur(6px);
+  }
+  .hero h1{font-size:clamp(2.4rem,9vw,4rem);font-weight:800;margin:20px 0 14px;letter-spacing:-.02em}
+  .hero h1 span{color:var(--g400)}
+  .hero p.lead{max-width:640px;margin:0 auto;font-size:1.08rem;color:rgba(255,255,255,.9)}
+  .stats{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+  .stat{
+    min-width:150px;padding:14px 20px;border-radius:20px; text-align:left;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(6px);
+  }
+  .stat b{display:block;font-family:'Poppins',sans-serif;font-size:1.7rem;line-height:1.1}
+  .stat small{font-size:.9rem;color:rgba(255,255,255,.85)}
+  .cta{
+    display:inline-block;margin-top:30px;padding:14px 28px;border-radius:999px;
+    background:var(--g500);color:#04210f;font-weight:700;text-decoration:none;
+    box-shadow:0 8px 20px rgba(34,197,94,.45);transition:transform .2s, box-shadow .2s;
+  }
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(34,197,94,.55)}
+
+  /* ---------- SECCIONES ---------- */
+  section{padding:46px 0 6px}
+  .eyebrow{color:var(--g700);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+  h2{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700;margin:6px 0 10px}
+  .sub{color:var(--muted);max-width:680px}
+
+  /* Bienvenida */
+  .welcome{
+    margin-top:22px;padding:26px 22px;border-radius:var(--radius);
+    background:linear-gradient(135deg,#fff,var(--g100));
+    border:1px solid #c4ecd2; box-shadow:var(--shadow);
+  }
+  .welcome h3{font-size:1.35rem;margin-bottom:10px}
+  .welcome p{margin-bottom:10px;color:#25533d}
+  .benefits{display:grid;gap:12px;margin-top:20px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .benefit{
+    background:#fff;border:1px solid #d3efdd;border-radius:18px;padding:16px;
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .benefit .ic{font-size:1.6rem;line-height:1}
+  .benefit b{display:block;font-family:'Poppins',sans-serif;font-size:.98rem}
+  .benefit span{font-size:.9rem;color:var(--muted)}
+
+  /* Pasos */
+  .steps{display:grid;gap:12px;margin-top:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:s}
+  .step{
+    position:relative;background:#fff;border-radius:18px;padding:18px 18px 18px 64px;
+    border:1px solid #d3efdd;counter-increment:s;
+  }
+  .step::before{
+    content:counter(s);position:absolute;left:16px;top:16px;width:36px;height:36px;border-radius:50%;
+    display:grid;place-items:center;font-family:'Poppins',sans-serif;font-weight:700;
+    background:var(--g500);color:#04210f;
+  }
+  .step b{display:block;font-family:'Poppins',sans-serif}
+  .step span{font-size:.92rem;color:var(--muted)}
+
+  /* Tarjetas de carreras */
+  .grid{display:grid;gap:22px;margin-top:24px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+  .card{
+    background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    border:1px solid #d3efdd; display:flex;flex-direction:column;
+    opacity:0;transform:translateY(14px);animation:up .6s ease forwards;
+  }
+  @keyframes up{to{opacity:1;transform:none}}
+  .card-head{
+    position:relative;min-height:150px;padding:20px;display:flex;align-items:flex-end;color:#fff;
+    background:linear-gradient(150deg,var(--c1),var(--c2));
+  }
+  .card-head::before{
+    content:"";position:absolute;inset:0;opacity:.28;
+    background-image:radial-gradient(rgba(255,255,255,.55) 1.2px, transparent 1.6px);
+    background-size:22px 22px;
+  }
+  .card-head::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:70%;
+    background:linear-gradient(to top,rgba(0,0,0,.45),transparent);
+  }
+  .card-head .emoji{position:absolute;top:14px;right:18px;font-size:3.2rem;filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));z-index:1}
+  .card-head h3{position:relative;z-index:1;font-size:1.45rem;font-weight:700}
+  /* Tarjetas con imagen de fondo */
+  .card-head.has-img{
+    min-height:210px;
+    background-image:
+      linear-gradient(to top, rgba(6,40,27,.94) 0%, rgba(6,40,27,.6) 34%, rgba(6,40,27,0) 70%),
+      var(--img);
+    background-size:cover; background-repeat:no-repeat;
+    background-position:center, var(--pos, center);
+  }
+  .card-head.has-img::before,.card-head.has-img::after{display:none}
+  .card-head.has-img .emoji{display:none}
+  .card-head.has-img h3{text-shadow:0 2px 12px rgba(0,0,0,.65)}
+  .rows{padding:16px;display:grid;gap:12px}
+  .row{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:14px 14px 14px 18px;border-radius:18px;background:var(--g50);border:1px solid #d3efdd;
+  }
+  .row b{display:block;font-family:'Poppins',sans-serif;font-size:1.05rem}
+  .row small{color:var(--g700);font-weight:500}
+  .row.off small{color:#7c8f85}
+  .wa{
+    flex:none;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+    background:var(--g500);color:#fff;text-decoration:none;
+    box-shadow:0 6px 14px rgba(34,197,94,.4);transition:transform .15s, background .2s;
+  }
+  .wa:hover{transform:scale(1.07);background:#16a34a}
+  .wa:focus-visible,.cta:focus-visible{outline:3px solid var(--g800);outline-offset:3px}
+  .wa svg{width:28px;height:28px}
+  .wa.off{background:#b9c9c0;box-shadow:none;cursor:not-allowed}
+  .wa.off:hover{transform:none;background:#b9c9c0}
+
+  /* Reglas */
+  .rules{
+    margin-top:22px;padding:26px 22px;border-radius:var(--radius);color:#fff;
+    background:linear-gradient(150deg,var(--g900),var(--g700));box-shadow:var(--shadow);
+  }
+  .rules h3{font-size:1.4rem;margin-bottom:8px}
+  .rules ul{list-style:none;margin-top:14px;display:grid;gap:10px}
+  .rules li{padding-left:34px;position:relative;color:rgba(255,255,255,.92)}
+  .rules li::before{content:"💚";position:absolute;left:0}
+
+  /* Aviso y pie */
+  .notice{
+    margin-top:26px;padding:18px 20px;border-radius:18px;background:#fff8e1;border:1px solid #f3dd96;
+    color:#5c4a00;font-size:.95rem;
+  }
+  footer{margin-top:40px;padding:30px 0 40px;text-align:center;color:var(--muted);font-size:.9rem;background:var(--g100)}
+  footer b{color:var(--g800)}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .card{animation:none;opacity:1;transform:none}
+    .cta,.wa{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logo" id="logo">🌿</div>
+    <div class="pill">🎓 Comunidad estudiantil · No oficial</div>
+    <h1>Comunidad <span>UEA</span></h1>
+    <p class="lead">
+      ¡Bienvenido/a, estudiante! 💚 Encuentra y únete al grupo de WhatsApp de tu carrera en línea.
+      Un espacio creado por estudiantes, para estudiantes: conecta con tus compañeros, resuelve dudas,
+      comparte materiales y mantente al día con las noticias.
+    </p>
+    <div class="stats">
+      <div class="stat"><b id="statGrupos">0</b><small>grupos disponibles</small></div>
+      <div class="stat"><b id="statCarreras">0</b><small>carreras</small></div>
+      <div class="stat"><b id="statCursos">1</b><small>curso de inglés</small></div>
+    </div>
+    <a class="cta" href="#carreras">Buscar mi grupo ↓</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- BIENVENIDA -->
+    <section id="bienvenida">
+      <div class="eyebrow">Bienvenida</div>
+      <h2>Aprende, colabora y crece con nosotros</h2>
+      <p class="sub">Estudiar en línea puede sentirse solitario, pero no tiene por qué serlo. Aquí encontrarás a otros estudiantes que están en tu misma situación y que están dispuestos a ayudarte.</p>
+
+      <div class="welcome">
+        <h3>🌿 ¡Qué alegría tenerte aquí!</h3>
+        <p>Esta comunidad nació con una idea sencilla: que ningún estudiante se quede sin información ni sin apoyo. Cada grupo de WhatsApp está pensado para que puedas estar atento a las noticias, las fechas importantes y los avisos de tu carrera, y para que juntos nos ayudemos a salir adelante.</p>
+        <p>Únete al grupo que corresponde a tu carrera, preséntate con tu nombre y comparte lo que sepas. Todos somos compañeros y todos aprendemos de todos. ¡Bienvenido/a a esta comunidad amazónica! 🌱</p>
+
+        <div class="benefits">
+          <div class="benefit"><div class="ic">📚</div><div><b>Materiales y recursos</b><span>Apuntes, guías y recursos didácticos compartidos entre compañeros.</span></div></div>
+          <div class="benefit"><div class="ic">🤝</div><div><b>Ayuda mutua</b><span>Pregunta tus dudas y ayuda a otros cuando puedas.</span></div></div>
+          <div class="benefit"><div class="ic">📢</div><div><b>Boletines y anuncios</b><span>Entérate de las novedades para no perderte nada.</span></div></div>
+          <div class="benefit"><div class="ic">📌</div><div><b>Coordinación académica</b><span>Comunicados y organización entre estudiantes de tu carrera.</span></div></div>
+          <div class="benefit"><div class="ic">💬</div><div><b>Comunidad y compañerismo</b><span>Un lugar de respeto, apoyo y buena energía.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO UNIRTE -->
+    <section id="como">
+      <div class="eyebrow">Paso a paso</div>
+      <h2>¿Cómo unirte?</h2>
+      <div class="steps">
+        <div class="step"><b>Elige tu carrera</b><span>Busca la tarjeta de tu carrera más abajo.</span></div>
+        <div class="step"><b>Toca el botón verde</b><span>Se abrirá WhatsApp con la invitación del grupo.</span></div>
+        <div class="step"><b>Únete y preséntate</b><span>Saluda y di tu nombre y carrera. ¡Ya eres parte!</span></div>
+      </div>
+    </section>
+
+    <!-- CARRERAS -->
+    <section id="carreras">
+      <div class="eyebrow">Primer y segundo semestre</div>
+      <h2>📎 Únete al grupo de tu carrera</h2>
+      <p class="sub" id="resumen"></p>
+      <div class="grid" id="gridCarreras"></div>
+    </section>
+
+    <!-- CURSO DE INGLÉS -->
+    <section id="cursos">
+      <div class="eyebrow">Curso</div>
+      <h2>🗣️ Inglés</h2>
+      <p class="sub">Grupos para practicar, resolver dudas y compartir material del curso de inglés, según tu nivel.</p>
+      <div class="grid" id="gridCursos"></div>
+    </section>
+
+    <!-- REGLAS -->
+    <section id="reglas">
+      <div class="rules">
+        <h3>💚 ¡Juntos somos más fuertes! 💚</h3>
+        <p>Estos grupos son un espacio de respeto, colaboración y crecimiento. Todos somos compañeros y estamos aquí para apoyarnos.</p>
+        <ul>
+          <li>Trata a todos con respeto y amabilidad.</li>
+          <li>Comparte material y ayuda que realmente sirva a tus compañeros.</li>
+          <li>Evita el spam, las cadenas y la publicidad.</li>
+          <li>No compartas datos personales ni contraseñas en el grupo.</li>
+          <li>Usa el grupo para temas académicos y avisos de tu carrera.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <b>Aviso importante:</b> esta es una <b>comunidad estudiantil independiente y no es un sitio oficial</b> de la Universidad Estatal Amazónica. Los grupos fueron creados por estudiantes para apoyarse entre sí. Para información oficial (matrículas, calificaciones, calendarios), consulta siempre los canales oficiales de la universidad.
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Comunidad UEA</b> · Hecha por estudiantes, para estudiantes 🌿</p>
+    <p>Comunidad no oficial. No está afiliada ni representa a la universidad. El sello se muestra solo como referencia.</p>
+  </div>
+</footer>
+
+<noscript>
+  <div class="wrap"><p class="notice">Para ver los grupos necesitas activar JavaScript en tu navegador.</p></div>
+</noscript>
+
+<script>
+/* =====================================================
+   CONFIGURACIÓN: aquí editas todo en un solo lugar.
+   Si un enlace de WhatsApp cambia, solo reemplaza el
+   valor de "enlace" y vuelve a subir la página.
+   Deja el enlace vacío ("") para mostrar "Próximamente".
+   ===================================================== */
+
+// Logo del encabezado: "sello" usa el sello incluido en la página.
+// También puedes poner la ruta de otra imagen, ej. "logo.png". Vacío = muestra un ícono 🌿
+const LOGO = "sello";
+
+// Cada carrera usa una imagen incluida (img) y una posición (pos) para encuadrarla.
+
+const CARRERAS = [
+  { emoji:"🧒", nombre:"Educación Inicial", c1:"#0f5a3c", c2:"#22a06b", img:"inicial", pos:"center 45%",
+    niveles:[{ nombre:"Primer Semestre", detalle:"Grupo disponible",
+      enlace:"https://chat.whatsapp.com/C9gjncY1NvpHx6nfulr7cS?s=cl&p=a&mlu=0&iam=0" },
+      { nombre:"Segundo Semestre", detalle:"Grupo disponible",
+        enlace:"https://chat.whatsapp.com/L5aElmMFVIf6f5TmRPuM7a?s=sh&p=a&mlu=4&ilr=4" }] },
+
+  { emoji:"📖", nombre:"Educación Básica", c1:"#14532d", c2:"#16a34a", img:"basica", pos:"center 22%",
+    niveles:[{ nombre:"Primer Semestre", detalle:"Grupo disponible",
+      enlace:"https://chat.whatsapp.com/Kmv9KpFQGtC5KSJHPzeNFv?s=cl&p=a&mlu=0&iam=0" },
+      { nombre:"Segundo Semestre", detalle:"Grupo disponible",
+        enlace:"https://chat.whatsapp.com/B7ckdsXS1IA9kMHTYvX90X?s=sw&p=a&mlu=4&ilr=4" }] },
+
+  { emoji:"📡", nombre:"Comunicación", c1:"#064e3b", c2:"#10b981", img:"comunicacion", pos:"center 30%",
+    niveles:[{ nombre:"Primer Semestre", detalle:"Grupo disponible",
+      enlace:"https://chat.whatsapp.com/Hk1YJHNt8jnJ4zbUXZ5ecg?s=cl&p=a&mlu=0&iam=0" },
+      { nombre:"Segundo Semestre", detalle:"Grupo disponible",
+        enlace:"https://chat.whatsapp.com/FQCixJrFiwF5DNg2LaeLXh?s=cl&p=a&mlu=4&ilr=4" }] },
+
+  { emoji:"💻", nombre:"Tecnologías de la Información", c1:"#0b3d2a", c2:"#0d9488", img:"ti", pos:"center 40%",
+    niveles:[{ nombre:"Primer Semestre", detalle:"Grupo disponible",
+      enlace:"https://chat.whatsapp.com/KJVaeJEYmeQJc24RP5X03V?s=cl&p=a&mlu=0&iam=0" },
+      { nombre:"Segundo Semestre", detalle:"Grupo disponible",
+        enlace:"https://chat.whatsapp.com/GmuPv0lsdubKE3ESoe2XhQ?s=sh&p=a&mlu=4&ilr=4" }] },
+
+  { emoji:"🌍", nombre:"Turismo", c1:"#166534", c2:"#4ade80", img:"turismo", pos:"center 35%",
+    niveles:[{ nombre:"Primer Semestre", detalle:"Grupo disponible",
+      enlace:"https://chat.whatsapp.com/Gp82CitqrdM3bDT7pDWC1G?s=cl&p=a&mlu=0&iam=0" },
+      { nombre:"Segundo Semestre", detalle:"Grupo disponible",
+        enlace:"https://chat.whatsapp.com/HndJEhVxtX9Al2j8NhNaB6?s=sh&p=a&mlu=4&ilr=4" }] },
+
+  { emoji:"🤝", nombre:"Trabajo Social", c1:"#134e4a", c2:"#22c55e", img:"social", pos:"center 28%",
+    niveles:[{ nombre:"Primer Semestre", detalle:"Grupo disponible",
+      enlace:"https://chat.whatsapp.com/Iwe4kngBmFsLjvB0znKq08?s=cl&p=a&mlu=0&iam=0" },
+      { nombre:"Segundo Semestre", detalle:"Grupo disponible",
+        enlace:"https://chat.whatsapp.com/GjYW3AjkHu6C9gEhvxKnVr?s=sh&p=a&mlu=4&ilr=4" }] }
+];
+
+const CURSOS = [
+  { emoji:"🗣️", nombre:"Curso de Inglés", c1:"#0b3d2a", c2:"#16a34a", img:"ingles", pos:"center 50%",
+    niveles:[
+      { nombre:"Inglés A1", detalle:"Nivel básico",
+        enlace:"https://chat.whatsapp.com/CBrkQ4aRawl5aL2cXRNZEO?s=cl&p=a&mlu=4&ilr=4" },
+      { nombre:"Inglés A2", detalle:"Nivel elemental",
+        enlace:"https://chat.whatsapp.com/GtZzt2YaDCeIPBFj9iy8Ya" }
+    ] }
+];
+
+/* ===================== CÓDIGO ===================== */
+const WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.2A9.5 9.5 0 1 0 12 2.5z"/><path d="M8.7 8.4c0 3.5 3.4 6.9 6.9 6.9l1.3-1.5-2.2-1.1-.9.9c-1.1-.5-2.2-1.6-2.7-2.7l.9-.9-1.1-2.2z" fill="currentColor" stroke="none"/></svg>';
+
+function el(tag, cls, text){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text) e.textContent = text;
+  return e;
+}
+
+function tarjeta(item, i){
+  const card = el('article','card');
+  card.style.setProperty('--c1', item.c1);
+  card.style.setProperty('--c2', item.c2);
+  card.style.animationDelay = (i * 80) + 'ms';
+
+  const head = el('div','card-head');
+  const src = (typeof IMAGENES !== 'undefined' && item.img) ? IMAGENES[item.img] : '';
+  if (src){
+    head.classList.add('has-img');
+    head.style.setProperty('--img', 'url("' + src + '")');
+    head.style.setProperty('--pos', item.pos || 'center');
+  }
+  head.appendChild(el('div','emoji', item.emoji));
+  head.appendChild(el('h3', null, item.nombre));
+  card.appendChild(head);
+
+  const rows = el('div','rows');
+  item.niveles.forEach(n => {
+    const activo = !!n.enlace;
+    const row = el('div','row' + (activo ? '' : ' off'));
+    const info = el('div');
+    info.appendChild(el('b', null, n.nombre));
+    info.appendChild(el('small', null, activo ? n.detalle : 'Próximamente'));
+    row.appendChild(info);
+
+    let btn;
+    if (activo){
+      btn = document.createElement('a');
+      btn.href = n.enlace;
+      btn.target = '_blank';
+      btn.rel = 'noopener noreferrer';
+      btn.className = 'wa';
+      btn.setAttribute('aria-label', 'Unirme al grupo de WhatsApp: ' + item.nombre + ' - ' + n.nombre);
+    } else {
+      btn = document.createElement('span');
+      btn.className = 'wa off';
+      btn.setAttribute('aria-label', n.nombre + ': enlace próximamente');
+    }
+    btn.innerHTML = WA_ICON;
+    row.appendChild(btn);
+    rows.appendChild(row);
+  });
+  card.appendChild(rows);
+  return card;
+}
+
+function pintar(lista, contenedorId, offset){
+  const cont = document.getElementById(contenedorId);
+  lista.forEach((item, i) => cont.appendChild(tarjeta(item, i + offset)));
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+pintar(CARRERAS, 'gridCarreras', 0);
+pintar(CURSOS, 'gridCursos', CARRERAS.length);
+
+const todos = CARRERAS.concat(CURSOS);
+const gruposActivos = todos.reduce((s, c) => s + c.niveles.filter(n => n.enlace).length, 0);
+document.getElementById('statGrupos').textContent = gruposActivos;
+document.getElementById('statCarreras').textContent = CARRERAS.length;
+document.getElementById('statCursos').textContent = CURSOS.length;
+document.getElementById('resumen').textContent =
+  gruposActivos + ' grupos disponibles en ' + CARRERAS.length + ' carreras y ' + CURSOS.length + ' curso. Toca el botón verde de tu carrera para unirte.';
+
+if (LOGO){
+  const l = document.getElementById('logo');
+  l.textContent = '';
+  const img = document.createElement('img');
+  img.src = (typeof IMAGENES !== 'undefined' && IMAGENES[LOGO]) || LOGO;
+  img.alt = 'Sello de la Universidad Estatal Amazónica';
+  img.onerror = () => { l.textContent = '🌿'; };
+  l.appendChild(img);
+}
+});
+</script>
+<script id="imagenes">
+/* Imágenes de la carpeta "img". Si cambias una foto, reemplaza el archivo
+   dentro de esa carpeta (con el mismo nombre) o cambia la ruta aquí. */
+const IMAGENES = {
+  sello:        "img/sello.png",
+  inicial:      "img/inicial.jpg",
+  basica:       "img/basica.jpg",
+  comunicacion: "img/comunicacion.jpg",
+  ti:           "img/ti.jpg",
+  turismo:      "img/turismo.jpg",
+  social:       "img/social.jpg",
+  ingles:       "img/ingles.jpg"
+};
+</script>
+</body>
+</html>
